@@ -90,7 +90,6 @@ create_buffer(u_char *p, ngx_int_t len, ngx_pool_t *pool)
 static ngx_int_t
 ngx_http_markdown_handler(ngx_http_request_t *r)
 {
-    ngx_int_t                    rc;
     ngx_buf_t                   *buf;
     ngx_chain_t                  out;
     ngx_str_t                    content_type = ngx_string("text/html");
@@ -133,7 +132,7 @@ ngx_http_markdown_handler(ngx_http_request_t *r)
     r->headers_out.content_type = content_type;
     r->headers_out.content_length_n = content_length;
 
-    rc = ngx_http_send_header(r);
+    ngx_http_send_header(r);
     return ngx_http_output_filter(r, &out);
 }
 
